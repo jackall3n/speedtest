@@ -18,11 +18,11 @@ app.post('/dump', async (request, res) => {
 
   console.log(body);
 
-  const date = Date.now();
+  const date = new Date();
 
   await database.dump({
-    [date]: {
-      date,
+    [date.getTime()]: {
+      timestamp: date.toISOString(),
       ...body
     }
   });
