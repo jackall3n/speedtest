@@ -17,6 +17,10 @@ class DatabaseService {
     const dumps = this.db.get('dumps');
     dumps.push(dump).write();
   }
+
+  async dumps() {
+    return await this.db.get('dumps').value()
+  }
 }
 
 export default DatabaseService;
