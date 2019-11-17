@@ -1,2 +1,6 @@
+# general
 .idea
+
+# python
 python/venv
+python/__pycache__
