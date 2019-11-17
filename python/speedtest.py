@@ -1,7 +1,7 @@
 import time
 import subprocess
 
-INTERVAL = 10
+INTERVAL = 60
 
 
 def perform_check():
