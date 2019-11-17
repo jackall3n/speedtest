@@ -1,6 +1,7 @@
 import express from 'express';
 import fs from 'fs-extra';
 import path from 'path';
+import cors from 'cors';
 import Database from "./database";
 
 const { PORT = 3000, OUTPUT = './db' } = process.env;
@@ -9,6 +10,7 @@ let database: Database;
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());
 
