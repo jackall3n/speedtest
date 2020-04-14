@@ -1,5 +1,5 @@
 from daemon import DaemonContext
-from speedtest import start
+from .speedtest import start
 
 print('what')
 

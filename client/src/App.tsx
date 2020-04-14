@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 const App: React.FC = () => {
+  const [data, setData] = useState<{ download: string }[][]>([]);
+
+  const get = async () => {
+    const response = await fetch('http://157.245.41.239/');
+
+    setData(await response.json());
+  };
+
+  useEffect(() => {
+    get();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {data.map((datum, index) => {
+          const { download } = (Object.entries(datum)[0][1]);
+
+          return (
+            <div key={index}>
+              {parseFloat(download) / 1000 / 1000}
+            </div>
+          )
+        }
+      )}
     </div>
   );
-}
+};
 
 export default App;

@@ -16,7 +16,7 @@ app.use(express.urlencoded());
 
 app.get('/dumps',async  (req, res) => {
   res.send(await database.dumps())
-})
+});
 
 app.post('/dump', async (request, res) => {
 

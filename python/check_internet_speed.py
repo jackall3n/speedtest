@@ -4,17 +4,14 @@ from requests import post
 
 print('Performing check...')
 
+# Get output from CLI
 output = subprocess.check_output(['speedtest-cli', '--json'])
 
+# Convert to object
 results = json.loads(output)
-
 
 print('Response received')
 print('Sending to server...')
 
-response = post('http://178.62.32.208/dump', results)
-
-print('Server responded with:')
-print(response.json())
-
-print(results['client'])
+# Log to the server
+post('http://157.245.41.239/', json=results)
